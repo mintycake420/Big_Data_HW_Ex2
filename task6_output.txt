@@ -1,0 +1,77 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< com.haifa.bigdata:spark-imdb-analysis >----------------
+[INFO] Building spark-imdb-analysis 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] 2 problems were encountered while building the effective model for org.apache.yetus:audience-annotations:jar:0.5.0 during dependency collection step for project (use -X to see details)
+[INFO] 
+[INFO] --- exec:3.1.0:java (default-cli) @ spark-imdb-analysis ---
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+=== Task 6: Genre Diversity in Ratings ===
+
+SLF4J: Failed to load class "org.slf4j.impl.StaticMDCBinder".
+SLF4J: Defaulting to no-operation MDCAdapter implementation.
+SLF4J: See http://www.slf4j.org/codes.html#no_static_mdc_binder for further details.
+Total entries with valid genre and rating: 0
+
+--- Step 1: Grouping Movies by Genre ---
+
+Sample of genre-split data:
++-----+-----+------+
+|title|genre|rating|
++-----+-----+------+
++-----+-----+------+
+
+
+--- Step 2: Calculating Rating Statistics by Genre ---
+
+=== Genre Rating Statistics (All Genres) ===
++-----+-----+----------+-------------+----------+----------+------------+
+|genre|count|avg_rating|stddev_rating|min_rating|max_rating|rating_range|
++-----+-----+----------+-------------+----------+----------+------------+
++-----+-----+----------+-------------+----------+----------+------------+
+
+
+--- Step 3: Identifying Extreme Variability Genres ---
+[WARNING] 
+java.util.NoSuchElementException: next on empty iterator
+    at scala.collection.Iterator$$anon$2.next (Iterator.scala:41)
+    at scala.collection.Iterator$$anon$2.next (Iterator.scala:39)
+    at scala.collection.IterableLike.head (IterableLike.scala:109)
+    at scala.collection.IterableLike.head$ (IterableLike.scala:108)
+    at scala.collection.mutable.ArrayOps$ofRef.scala$collection$IndexedSeqOptimized$$super$head (ArrayOps.scala:198)
+    at scala.collection.IndexedSeqOptimized.head (IndexedSeqOptimized.scala:129)
+    at scala.collection.IndexedSeqOptimized.head$ (IndexedSeqOptimized.scala:129)
+    at scala.collection.mutable.ArrayOps$ofRef.head (ArrayOps.scala:198)
+    at org.apache.spark.sql.Dataset.head (Dataset.scala:3323)
+    at org.apache.spark.sql.Dataset.first (Dataset.scala:3330)
+    at Task6_GenreDiversity.main (Task6_GenreDiversity.java:84)
+    at org.codehaus.mojo.exec.ExecJavaMojo$1.run (ExecJavaMojo.java:279)
+    at java.lang.Thread.run (Thread.java:1570)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  10.803 s
+[INFO] Finished at: 2026-02-06T23:13:23+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:3.1.0:java (default-cli) on project spark-imdb-analysis: An exception occurred while executing the Java class. next on empty iterator -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[WARNING] 
+java.lang.NoClassDefFoundError: org/apache/hadoop/util/ShutdownHookManager$2
+    at org.apache.hadoop.util.ShutdownHookManager.getShutdownHooksInOrder (ShutdownHookManager.java:275)
+    at org.apache.hadoop.util.ShutdownHookManager.executeShutdown (ShutdownHookManager.java:121)
+    at org.apache.hadoop.util.ShutdownHookManager$1.run (ShutdownHookManager.java:95)
+Caused by: java.lang.ClassNotFoundException: org.apache.hadoop.util.ShutdownHookManager$2
+    at org.codehaus.mojo.exec.URLClassLoaderBuilder$ExecJavaClassLoader.loadClass (URLClassLoaderBuilder.java:198)
+    at java.lang.ClassLoader.loadClass (ClassLoader.java:525)
+    at org.apache.hadoop.util.ShutdownHookManager.getShutdownHooksInOrder (ShutdownHookManager.java:275)
+    at org.apache.hadoop.util.ShutdownHookManager.executeShutdown (ShutdownHookManager.java:121)
+    at org.apache.hadoop.util.ShutdownHookManager$1.run (ShutdownHookManager.java:95)

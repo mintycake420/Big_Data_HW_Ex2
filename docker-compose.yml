@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  spark-homework:
+    build: .
+    container_name: spark-imdb-analysis
+    volumes:
+      # Mount source code for live editing
+      - ./src:/app/src
+      - ./data:/app/data
+      # Mount output directory to host
+      - ./output:/app/output
+      # Mount maven cache to speed up builds
+      - maven-cache:/root/.m2
+    environment:
+      - SPARK_LOCAL_IP=127.0.0.1
+      - MAVEN_OPTS=-Xmx4g
+    stdin_open: true
+    tty: true
+    working_dir: /app
+    command: /bin/bash
+
+volumes:
+  maven-cache:
+    driver: local

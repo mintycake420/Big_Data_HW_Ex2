@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(java -version:*)",
+      "Bash(curl:*)",
+      "Bash(export:*)",
+      "Bash(mvn exec:java:*)",
+      "Bash(mvn clean compile:*)"
+    ]
+  }
+}
