@@ -34,3 +34,8 @@ Thumbs.db
 *.tmp
 *.temp
 ~$*
+*_output.txt
+Test*.java
+
+# Claude Code
+.claude/
