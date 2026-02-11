@@ -6,36 +6,40 @@ echo "Running All IMDB Analysis Tasks"
 echo "========================================"
 echo ""
 
-echo "[1/8] Running Task 1: Data Cleaning..."
+echo "[1/9] Running Task 1: Data Cleaning..."
 mvn exec:java -Dexec.mainClass="Task1_DataCleaning"
 echo ""
 
-echo "[2/8] Running Task 2: Top Rated by Genre..."
+echo "[2/9] Running Task 2: Top Rated by Genre..."
 mvn exec:java -Dexec.mainClass="Task2_TopRatedByGenre"
 echo ""
 
-echo "[3/8] Running Task 3: Actor Collaboration..."
+echo "[3/9] Running Task 3: Actor Collaboration..."
 mvn exec:java -Dexec.mainClass="Task3_ActorCollaboration"
 echo ""
 
-echo "[4/8] Running Task 4: High-Rated Hidden Gems..."
+echo "[4/9] Running Task 4: High-Rated Hidden Gems..."
 mvn exec:java -Dexec.mainClass="Task4_HighRatedHiddenGems"
 echo ""
 
-echo "[5/8] Running Task 5: Word Frequency..."
+echo "[5/9] Running Task 5: Word Frequency..."
 mvn exec:java -Dexec.mainClass="Task5_WordFrequency"
 echo ""
 
-echo "[6/8] Running Task 6: Genre Diversity..."
+echo "[6/9] Running Task 6: Genre Diversity..."
 mvn exec:java -Dexec.mainClass="Task6_GenreDiversity"
 echo ""
 
-echo "[7/8] Running Task 7: Certification Distribution..."
+echo "[7/9] Running Task 7: Certification Distribution..."
 mvn exec:java -Dexec.mainClass="Task7_CertificationDistribution"
 echo ""
 
-echo "[8/8] Running Task 8: TV Shows vs Movies..."
+echo "[8/9] Running Task 8: TV Shows vs Movies..."
 mvn exec:java -Dexec.mainClass="Task8_TVvsMovies"
+echo ""
+
+echo "[9/9] Running Task 9: Certification Rating Distribution..."
+mvn exec:java -Dexec.mainClass="Task9_CertificationRatingDistribution"
 echo ""
 
 echo "========================================"

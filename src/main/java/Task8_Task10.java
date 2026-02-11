@@ -4,7 +4,7 @@ import org.apache.spark.sql.SparkSession;
 import static org.apache.spark.sql.functions.*;
 
 /**
- * Task 8: Comparing TV Shows and Movies
+ * Task 8+10: Comparing TV Shows and Movies
  *
  * Objective: Separate the dataset into movies and TV shows based on the year column
  *            and analyze their differences.
@@ -14,7 +14,7 @@ import static org.apache.spark.sql.functions.*;
  * 2. Compute average ratings and total votes for movies and TV shows
  * 3. Analyze trends in popularity (total votes) over time for both categories
  */
-public class Task8_TVvsMovies {
+public class Task8_Task10 {
 
     public static void main(String[] args) {
         // Create Spark session
