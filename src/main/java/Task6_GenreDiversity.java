@@ -37,9 +37,10 @@ public class Task6_GenreDiversity {
         // Clean the data
         Dataset<Row> cleanedDf = df
                 .filter(col("title").isNotNull().and(col("title").notEqual("")))
-                .filter(col("rating").isNotNull())  // rating is double, not string
+                .filter(col("rating").isNotNull())
                 .filter(col("genre").isNotNull().and(col("genre").notEqual("")))
-                .withColumn("rating_numeric", col("rating").cast("double"));
+                .withColumn("rating_numeric", col("rating").cast("double"))
+                .dropDuplicates("title");  // Remove duplicate titles (each title counted once)
 
         System.out.println("Total entries with valid genre and rating: " + cleanedDf.count());
 

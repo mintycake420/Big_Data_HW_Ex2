@@ -36,13 +36,14 @@ public class Task8_Task10 {
                 .csv(dataPath);
 
         // Clean the data
-        Dataset<Row> cleanedDf = df
+               Dataset<Row> cleanedDf = df
                 .filter(col("title").isNotNull().and(col("title").notEqual("")))
-                .filter(col("rating").isNotNull())  // rating is double, not string
+                .filter(col("rating").isNotNull())
                 .filter(col("votes").isNotNull().and(col("votes").notEqual("")))
                 .filter(col("year").isNotNull().and(col("year").notEqual("")))
                 .withColumn("rating_numeric", col("rating").cast("double"))
-                .withColumn("votes_numeric", regexp_replace(col("votes"), ",", "").cast("long"));
+                .withColumn("votes_numeric", regexp_replace(col("votes"), ",", "").cast("long"))
+                .dropDuplicates("title");  
 
         System.out.println("Total entries analyzed: " + cleanedDf.count());
 

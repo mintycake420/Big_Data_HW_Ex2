@@ -34,12 +34,14 @@ public class Task4_HighRatedHiddenGems {
                 .csv(dataPath);
 
         // Clean the data: convert votes to numeric and rating to double
-        Dataset<Row> cleanedDf = df
+        DatDataset<Row> cleanedDf = df
                 .filter(col("title").isNotNull().and(col("title").notEqual("")))
-                .filter(col("rating").isNotNull())  // rating is double, not string
+                .filter(col("rating").isNotNull())
                 .filter(col("votes").isNotNull().and(col("votes").notEqual("")))
                 .withColumn("rating_numeric", col("rating").cast("double"))
-                .withColumn("votes_numeric", regexp_replace(col("votes"), ",", "").cast("long"));
+                .withColumn("votes_numeric", regexp_replace(col("votes"), ",", "").cast("long"))
+                .dropDuplicates("title")  // Remove duplicate titles
+                .filter(not(col("year").rlike(".*\\d{4}\\s*[-–—].*")));  // Keep only movies
 
         System.out.println("Total entries with valid rating and votes: " + cleanedDf.count());
 

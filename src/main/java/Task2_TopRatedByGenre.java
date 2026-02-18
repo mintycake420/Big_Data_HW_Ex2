@@ -38,11 +38,12 @@ public class Task2_TopRatedByGenre {
 
         // Clean the data first
         Dataset<Row> cleanedDf = df
-                .filter(col("title").isNotNull().and(col("title").notEqual("")))
-                .filter(col("rating").isNotNull())  // rating is double, not string
-                .filter(col("genre").isNotNull().and(col("genre").notEqual("")))
-                .withColumn("rating_numeric", col("rating").cast("double"));
-
+        .filter(col("title").isNotNull().and(col("title").notEqual("")))
+        .filter(col("rating").isNotNull())
+        .filter(col("genre").isNotNull().and(col("genre").notEqual("")))
+        .withColumn("rating_numeric", col("rating").cast("double"))
+        .dropDuplicates("title")  // הסרת כפילויות לפי שם
+        .filter(not(col("year").rlike(".*\\d{4}\\s*[-–—].*")));  // רק סרטיםic", col("rating").cast("double"));
         System.out.println("Total entries with valid genre and rating: " + cleanedDf.count());
 
         // Step 1: Split the genre column into individual genres
